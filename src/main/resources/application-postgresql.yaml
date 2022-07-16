@@ -1,0 +1,12 @@
+spring:
+  sql:
+    init:
+       mode: always
+       platform: postgresql
+       continue-on-error: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dboe
+    username: test
+    password: t3st
+logging.level:
+  org.springframework.jdbc.datasource.init.ScriptUtils: DEBUG
