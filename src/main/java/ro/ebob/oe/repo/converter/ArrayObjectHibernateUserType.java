@@ -1,4 +1,4 @@
-package ro.ebob.oe.repo;
+package ro.ebob.oe.repo.converter;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.sql.*;
 import java.util.Arrays;
 
-public class ArrayUserType implements UserType {
+public class ArrayObjectHibernateUserType implements UserType {
 
   @Override
   public int[] sqlTypes() {
@@ -17,13 +17,13 @@ public class ArrayUserType implements UserType {
 
   @Override
   public Class returnedClass() {
-    return String[].class;
+    return Object[].class;
   }
 
   @Override
   public boolean equals(Object x, Object y) throws HibernateException {
-    if (x instanceof String[] && y instanceof String[]) {
-      return Arrays.deepEquals((String[])x, (String[])y);
+    if (x instanceof Object[] && y instanceof Object[]) {
+      return Arrays.deepEquals((Object[])x, (Object[])y);
     } else {
       return false;
     }
@@ -31,7 +31,7 @@ public class ArrayUserType implements UserType {
 
   @Override
   public int hashCode(Object x) throws HibernateException {
-    return Arrays.hashCode((String[])x);
+    return Arrays.hashCode((Object[])x);
   }
 
   @Override
@@ -45,7 +45,7 @@ public class ArrayUserType implements UserType {
   public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session)
       throws HibernateException, SQLException {
     if (value != null && st != null) {
-      Array array = session.connection().createArrayOf("varchar", (String[])value);
+      Array array = session.connection().createArrayOf("varchar", (Object[])value);
       st.setArray(index, array);
     } else {
       st.setNull(index, sqlTypes()[0]);
@@ -54,7 +54,7 @@ public class ArrayUserType implements UserType {
 
   @Override
   public Object deepCopy(Object value) throws HibernateException {
-    String[] a = (String[])value;
+    Object[] a = (Object[])value;
     return a == null ? null : Arrays.copyOf(a, a.length);
   }
 

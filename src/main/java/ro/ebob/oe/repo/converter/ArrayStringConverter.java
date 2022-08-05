@@ -1,4 +1,4 @@
-package ro.ebob.oe.repo;
+package ro.ebob.oe.repo.converter;
 
 import javax.persistence.Converter;
 import javax.persistence.AttributeConverter;

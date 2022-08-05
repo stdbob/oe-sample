@@ -1,6 +1,7 @@
 package ro.ebob.oe.repo.entity;
 
 import org.hibernate.annotations.Type;
+import ro.ebob.oe.repo.converter.ArrayObjectHibernateUserType;//trust me, it is used
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity(name = "CustomerEntity")
 @Table(name = "customers")
@@ -223,14 +223,14 @@ public class Customer {
   }
 
   @Column(name = "phone_numbers", columnDefinition = "VARCHAR(256) ARRAY")
-  @Type(type = "ro.ebob.oe.repo.ArrayUserType")
-  private String[] phoneNumbers;
+  @Type(type = "ro.ebob.oe.repo.converter.ArrayObjectHibernateUserType")
+  private Object[] phoneNumbers;
 
-  public String[] getPhoneNumbers() {
+  public Object[] getPhoneNumbers() {
     return phoneNumbers;
   }
 
-  public void setPhoneNumbers(String[] phoneNumbers) {
+  public void setPhoneNumbers(Object[] phoneNumbers) {
     this.phoneNumbers = phoneNumbers;
   }
 
