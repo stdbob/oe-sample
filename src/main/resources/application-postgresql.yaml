@@ -1,9 +1,11 @@
 spring:
   sql:
     init:
-       mode: always
+       mode: never
        platform: postgresql
        continue-on-error: false
+  jpa:
+    hibernate.ddl-auto: none
   datasource:
     url: jdbc:postgresql://localhost:5432/dboe
     username: test

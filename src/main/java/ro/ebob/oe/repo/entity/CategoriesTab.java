@@ -10,8 +10,8 @@ import java.math.BigDecimal;
 @Table(name = "categories_tab")
 public class CategoriesTab {
   @Id
-  @Column(name = "category_id", nullable = false, precision = 2)
-  private BigDecimal id;
+  @Column(name = "category_id", nullable = false)
+  private Long id;
 
   @Column(name = "category_name", length = 50)
   private String categoryName;
@@ -19,14 +19,14 @@ public class CategoriesTab {
   @Column(name = "category_description", length = 1000)
   private String categoryDescription;
 
-  @Column(name = "parent_category_id", precision = 2)
-  private BigDecimal parentCategoryId;
+  @Column(name = "parent_category_id")
+  private Long parentCategoryId;
 
-  public BigDecimal getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -46,11 +46,11 @@ public class CategoriesTab {
     this.categoryDescription = categoryDescription;
   }
 
-  public BigDecimal getParentCategoryId() {
+  public Long getParentCategoryId() {
     return parentCategoryId;
   }
 
-  public void setParentCategoryId(BigDecimal parentCategoryId) {
+  public void setParentCategoryId(Long parentCategoryId) {
     this.parentCategoryId = parentCategoryId;
   }
 

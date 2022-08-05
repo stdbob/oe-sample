@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.OffsetDateTime;
+import java.time.Instant;
 
 @Entity(name = "PurchaseOrderEntity")
 @Table(name = "purchase_order")
@@ -14,7 +14,7 @@ public class PurchaseOrder {
   private String id;
 
   @Column(name = "date_loaded")
-  private OffsetDateTime dateLoaded;
+  private Instant dateLoaded;
 
   public String getId() {
     return id;
@@ -24,11 +24,11 @@ public class PurchaseOrder {
     this.id = id;
   }
 
-  public OffsetDateTime getDateLoaded() {
+  public Instant getDateLoaded() {
     return dateLoaded;
   }
 
-  public void setDateLoaded(OffsetDateTime dateLoaded) {
+  public void setDateLoaded(Instant dateLoaded) {
     this.dateLoaded = dateLoaded;
   }
 

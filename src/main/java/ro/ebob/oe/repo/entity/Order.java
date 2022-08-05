@@ -8,8 +8,8 @@ import java.time.OffsetDateTime;
 @Table(name = "orders")
 public class Order {
   @Id
-  @Column(name = "order_id", nullable = false, precision = 12)
-  private BigDecimal id;
+  @Column(name = "order_id", nullable = false)
+  private Long id;
 
   @Column(name = "order_date", nullable = false)
   private OffsetDateTime orderDate;
@@ -21,23 +21,23 @@ public class Order {
   @JoinColumn(name = "customer_id", nullable = false)
   private Customer customer;
 
-  @Column(name = "order_status", precision = 2)
-  private BigDecimal orderStatus;
+  @Column(name = "order_status")
+  private Integer orderStatus;
 
   @Column(name = "order_total", precision = 8, scale = 2)
   private BigDecimal orderTotal;
 
-  @Column(name = "sales_rep_id", precision = 6)
-  private BigDecimal salesRepId;
+  @Column(name = "sales_rep_id")
+  private Integer salesRepId;
 
-  @Column(name = "promotion_id", precision = 6)
-  private BigDecimal promotionId;
+  @Column(name = "promotion_id")
+  private Integer promotionId;
 
-  public BigDecimal getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -65,11 +65,11 @@ public class Order {
     this.customer = customer;
   }
 
-  public BigDecimal getOrderStatus() {
+  public Integer getOrderStatus() {
     return orderStatus;
   }
 
-  public void setOrderStatus(BigDecimal orderStatus) {
+  public void setOrderStatus(Integer orderStatus) {
     this.orderStatus = orderStatus;
   }
 
@@ -81,19 +81,19 @@ public class Order {
     this.orderTotal = orderTotal;
   }
 
-  public BigDecimal getSalesRepId() {
+  public Integer getSalesRepId() {
     return salesRepId;
   }
 
-  public void setSalesRepId(BigDecimal salesRepId) {
+  public void setSalesRepId(Integer salesRepId) {
     this.salesRepId = salesRepId;
   }
 
-  public BigDecimal getPromotionId() {
+  public Integer getPromotionId() {
     return promotionId;
   }
 
-  public void setPromotionId(BigDecimal promotionId) {
+  public void setPromotionId(Integer promotionId) {
     this.promotionId = promotionId;
   }
 

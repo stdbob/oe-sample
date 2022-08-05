@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class ProductInformation {
   @Id
   @Column(name = "product_id", nullable = false, precision = 6)
-  private BigDecimal id;
+  private Long id;
 
   @Column(name = "product_name", length = 50)
   private String productName;
@@ -20,13 +20,13 @@ public class ProductInformation {
   private String productDescription;
 
   @Column(name = "category_id", precision = 2)
-  private BigDecimal categoryId;
+  private Long categoryId;
 
   @Column(name = "weight_class", precision = 1)
-  private BigDecimal weightClass;
+  private Integer weightClass;
 
   @Column(name = "supplier_id", precision = 6)
-  private BigDecimal supplierId;
+  private Integer supplierId;
 
   @Column(name = "product_status", length = 20)
   private String productStatus;
@@ -39,11 +39,11 @@ public class ProductInformation {
   @Column(name = "catalog_url", length = 50)
   private String catalogUrl;
 
-  public BigDecimal getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -63,27 +63,27 @@ public class ProductInformation {
     this.productDescription = productDescription;
   }
 
-  public BigDecimal getCategoryId() {
+  public Long getCategoryId() {
     return categoryId;
   }
 
-  public void setCategoryId(BigDecimal categoryId) {
+  public void setCategoryId(Long categoryId) {
     this.categoryId = categoryId;
   }
 
-  public BigDecimal getWeightClass() {
+  public Integer getWeightClass() {
     return weightClass;
   }
 
-  public void setWeightClass(BigDecimal weightClass) {
+  public void setWeightClass(Integer weightClass) {
     this.weightClass = weightClass;
   }
 
-  public BigDecimal getSupplierId() {
+  public Integer getSupplierId() {
     return supplierId;
   }
 
-  public void setSupplierId(BigDecimal supplierId) {
+  public void setSupplierId(Integer supplierId) {
     this.supplierId = supplierId;
   }
 

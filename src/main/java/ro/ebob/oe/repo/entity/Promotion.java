@@ -10,17 +10,17 @@ import java.math.BigDecimal;
 @Table(name = "promotions")
 public class Promotion {
   @Id
-  @Column(name = "promo_id", nullable = false, precision = 6)
-  private BigDecimal id;
+  @Column(name = "promo_id", nullable = false)
+  private Integer id;
 
   @Column(name = "promo_name", length = 20)
   private String promoName;
 
-  public BigDecimal getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

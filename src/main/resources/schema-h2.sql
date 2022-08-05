@@ -32,7 +32,7 @@ CREATE TABLE customers (
         state_province VARCHAR(10),
         country_id     CHAR(2),
     --phone_numbers     phone_list_typ,
-        phone_numbers   VARCHAR(15) ARRAY,
+        phone_numbers   VARCHAR(256) ARRAY,
     nls_language      VARCHAR(3),
     nls_territory     VARCHAR(30),
     credit_limit      NUMERIC(9, 2),

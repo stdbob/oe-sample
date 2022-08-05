@@ -5,5 +5,5 @@ import ro.ebob.oe.repo.entity.Customer;
 
 import java.math.BigDecimal;
 
-public interface CustomerRepository extends JpaRepository<Customer, BigDecimal> {
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 }

@@ -2,5 +2,12 @@ spring:
   sql:
     init:
        platform: h2
+       continue-on-error: false
+#       mode: never
+  jpa:
+    hibernate.ddl-auto: update
 logging.level:
   org.springframework.jdbc.datasource.init.ScriptUtils: DEBUG
+  org.hibernate:
+    SQL: DEBUG
+    type.descriptor.sql.BasicBinder: TRACE

@@ -12,8 +12,8 @@ DROP TABLE IF EXISTS purchase_order CASCADE;
 CREATE TABLE categories_tab (
     category_name        VARCHAR(50),
     category_description VARCHAR(1000),
-    category_id          NUMERIC(2) NOT NULL,
-    parent_category_id   NUMERIC(2)
+    category_id          BIGINT NOT NULL,
+    parent_category_id   BIGINT
 );
 
 ALTER TABLE categories_tab ADD CONSTRAINT category_pk PRIMARY KEY ( category_id );
@@ -21,7 +21,7 @@ ALTER TABLE categories_tab ADD CONSTRAINT category_pk PRIMARY KEY ( category_id 
 
 --Promotions
 CREATE TABLE promotions (
-    promo_id   NUMERIC(6) NOT NULL,
+    promo_id   INTEGER,
     promo_name VARCHAR(20)
 );
 
@@ -31,7 +31,7 @@ ALTER TABLE promotions ADD CONSTRAINT promo_id_pk PRIMARY KEY ( promo_id );
 
 --Customers
 CREATE TABLE customers (
-    customer_id       NUMERIC(6) NOT NULL,
+    customer_id       BIGINT NOT NULL,
     cust_first_name   VARCHAR(20) NOT NULL,
     cust_last_name    VARCHAR(20) NOT NULL,
     --cust_address      cust_address_typ,
@@ -41,12 +41,12 @@ CREATE TABLE customers (
         state_province VARCHAR(10),
         country_id     CHAR(2),
     --phone_NUMERICs     phone_list_typ,
-        phone_NUMERICs   VARCHAR(15) ARRAY,
+        phone_numbers   VARCHAR(256) ARRAY,
     nls_language      VARCHAR(3),
     nls_territory     VARCHAR(30),
     credit_limit      NUMERIC(9, 2),
     cust_email        VARCHAR(128),
-    account_mgr_id    NUMERIC(6),
+    account_mgr_id    INTEGER,
     cust_geo_lat NUMERIC(12, 8),
     cust_geo_long NUMERIC(12, 8),
     date_of_birth     DATE,
@@ -63,14 +63,14 @@ ALTER TABLE customers ADD CONSTRAINT customers_pk PRIMARY KEY ( customer_id );
 
 --Orders
 CREATE TABLE orders (
-    order_id     NUMERIC(12) NOT NULL,
+    order_id     BIGINT NOT NULL,
     order_date   TIMESTAMP WITH TIME ZONE NOT NULL,
     order_mode   VARCHAR(8),
-    customer_id  NUMERIC(6) NOT NULL,
-    order_status NUMERIC(2),
+    customer_id  BIGINT NOT NULL,
+    order_status smallint,
     order_total  NUMERIC(8, 2),
-    sales_rep_id NUMERIC(6),
-    promotion_id NUMERIC(6)
+    sales_rep_id integer,
+    promotion_id integer
 );
 
 ALTER TABLE orders
@@ -87,13 +87,13 @@ ALTER TABLE orders
 
 --ProductInformation
 CREATE TABLE product_information (
-    product_id          NUMERIC(6) NOT NULL,
+    product_id          BIGINT NOT NULL,
     product_name        VARCHAR(50),
     product_description VARCHAR(2000),
-    category_id         NUMERIC(2),
-    weight_class        NUMERIC(1),
+    category_id         BIGINT,
+    weight_class        smallint,
     warranty_period     INTERVAL YEAR TO MONTH,
-    supplier_id         NUMERIC(6),
+    supplier_id         INTEGER,
     product_status      VARCHAR(20),
     list_price          NUMERIC(8, 2),
     min_price           NUMERIC(8, 2),
@@ -115,9 +115,9 @@ ALTER TABLE product_information ADD CONSTRAINT product_information_pk PRIMARY KE
 
 --OrderItems
 CREATE TABLE order_items (
-    order_id     NUMERIC(12) NOT NULL,
-    line_item_id NUMERIC(3) NOT NULL,
-    product_id   NUMERIC(6) NOT NULL,
+    order_id     BIGINT NOT NULL,
+    line_item_id BIGINT NOT NULL,
+    product_id   BIGINT NOT NULL,
     unit_price   NUMERIC(8, 2),
     quantity     NUMERIC(8)
 );
@@ -144,7 +144,7 @@ ALTER TABLE order_items
 
 --ProductDescription
 CREATE TABLE product_descriptions (
-    product_id             NUMERIC(6) NOT NULL,
+    product_id             BIGINT NOT NULL,
     language_id            VARCHAR(3) NOT NULL,
     translated_name        VARCHAR(50) NOT NULL,
     translated_description VARCHAR(2000) NOT NULL
@@ -164,10 +164,10 @@ ALTER TABLE product_descriptions
 
 --Warehouse
 CREATE TABLE warehouses (
-    warehouse_id    NUMERIC(3) NOT NULL,
+    warehouse_id    INTEGER NOT NULL,
     warehouse_spec  TEXT,
     warehouse_name  VARCHAR(35),
-    location_id     NUMERIC(4),
+    location_id     INTEGER,
     wh_geo_location NUMERIC(14, 4)
 );
 COMMENT ON COLUMN warehouses.warehouse_id IS
@@ -180,8 +180,8 @@ ALTER TABLE warehouses ADD CONSTRAINT warehouses_pk PRIMARY KEY ( warehouse_id )
 
 --Inventories
 CREATE TABLE inventories (
-    product_id       NUMERIC(6) NOT NULL,
-    warehouse_id     NUMERIC(3) NOT NULL,
+    product_id       INTEGER NOT NULL,
+    warehouse_id     INTEGER NOT NULL,
     quantity_on_hand NUMERIC(8) NOT NULL
 );
 

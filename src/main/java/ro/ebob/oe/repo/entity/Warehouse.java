@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 public class Warehouse {
   @Id
   @Column(name = "warehouse_id", nullable = false, precision = 3)
-  private BigDecimal id;
+  private Long id;
 
   @Lob
   @Column(name = "warehouse_spec")
@@ -18,16 +18,16 @@ public class Warehouse {
   private String warehouseName;
 
   @Column(name = "location_id", precision = 4)
-  private BigDecimal locationId;
+  private Integer locationId;
 
   @Column(name = "wh_geo_location", precision = 14, scale = 4)
   private BigDecimal whGeoLocation;
 
-  public BigDecimal getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -47,11 +47,11 @@ public class Warehouse {
     this.warehouseName = warehouseName;
   }
 
-  public BigDecimal getLocationId() {
+  public Integer getLocationId() {
     return locationId;
   }
 
-  public void setLocationId(BigDecimal locationId) {
+  public void setLocationId(Integer locationId) {
     this.locationId = locationId;
   }
 

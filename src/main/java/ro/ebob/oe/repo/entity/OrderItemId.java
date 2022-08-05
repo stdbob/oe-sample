@@ -13,24 +13,24 @@ import java.util.Objects;
 public class OrderItemId implements Serializable {
   private static final long serialVersionUID = -8558832286885663220L;
   @Column(name = "order_id", nullable = false, precision = 12)
-  private BigDecimal orderId;
+  private Long orderId;
 
   @Column(name = "line_item_id", nullable = false, precision = 3)
-  private BigDecimal lineItemId;
+  private Long lineItemId;
 
-  public BigDecimal getOrderId() {
+  public Long getOrderId() {
     return orderId;
   }
 
-  public void setOrderId(BigDecimal orderId) {
+  public void setOrderId(Long orderId) {
     this.orderId = orderId;
   }
 
-  public BigDecimal getLineItemId() {
+  public Long getLineItemId() {
     return lineItemId;
   }
 
-  public void setLineItemId(BigDecimal lineItemId) {
+  public void setLineItemId(Long lineItemId) {
     this.lineItemId = lineItemId;
   }
 

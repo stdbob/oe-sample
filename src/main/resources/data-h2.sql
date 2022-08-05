@@ -79,7 +79,7 @@ INSERT INTO promotions (promo_id, promo_name)
 --Customers
 INSERT INTO customers VALUES
     (101,'Constantin','Welles','514 W Superior St','46901','Kokomo','IN','US',
-    ('+1 317 123 4104'),'us','AMERICA','100','Constantin.Welles@ANHINGA.EXAMPLE.COM',
+    ('+1 317 123 4104', '1112-1232'),'us','AMERICA','100','Constantin.Welles@ANHINGA.EXAMPLE.COM',
     149,-86.13631, 40.485424,NULL,NULL,NULL,NULL);
 INSERT INTO customers VALUES
     (102,'Harrison','Pacino','2515 Bloyd Ave','46218','Indianapolis','IN','US',

@@ -1,18 +1,21 @@
 package ro.ebob.oe.repo.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity(name = "CustomerEntity")
 @Table(name = "customers")
 public class Customer {
   @Id
   @Column(name = "customer_id", nullable = false, precision = 6)
-  private BigDecimal id;
+  private Long id;
 
   @Column(name = "cust_first_name", nullable = false, length = 20)
   private String custFirstName;
@@ -47,8 +50,8 @@ public class Customer {
   @Column(name = "cust_email", length = 128)
   private String custEmail;
 
-  @Column(name = "account_mgr_id", precision = 6)
-  private BigDecimal accountMgrId;
+  @Column(name = "account_mgr_id")
+  private Integer accountMgrId;
 
   @Column(name = "cust_geo_lat", precision = 12, scale = 8)
   private BigDecimal custGeoLat;
@@ -67,11 +70,11 @@ public class Customer {
   @Column(name = "income_level", length = 20)
   private String incomeLevel;
 
-  public BigDecimal getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -163,11 +166,11 @@ public class Customer {
     this.custEmail = custEmail;
   }
 
-  public BigDecimal getAccountMgrId() {
+  public Integer getAccountMgrId() {
     return accountMgrId;
   }
 
-  public void setAccountMgrId(BigDecimal accountMgrId) {
+  public void setAccountMgrId(Integer accountMgrId) {
     this.accountMgrId = accountMgrId;
   }
 
@@ -219,29 +222,17 @@ public class Customer {
     this.incomeLevel = incomeLevel;
   }
 
-/*
-  TODO [JPA Buddy] create field to map the 'phone_numerics' column
-   Available actions: Define target Java type | Uncomment as is | Remove column mapping
-  @Column(name = "phone_numerics", columnDefinition = "varchar[]")
-  private Object phoneNumerics;
-*/
+  @Column(name = "phone_numbers", columnDefinition = "VARCHAR(256) ARRAY")
+  @Type(type = "ro.ebob.oe.repo.ArrayUserType")
+  private String[] phoneNumbers;
 
-  public String[] getPhoneNumerics() {
-    return phoneNumerics;
+  public String[] getPhoneNumbers() {
+    return phoneNumbers;
   }
 
-  public void setPhoneNumerics(String[] phoneNumerics) {
-    this.phoneNumerics = phoneNumerics;
+  public void setPhoneNumbers(String[] phoneNumbers) {
+    this.phoneNumbers = phoneNumbers;
   }
-
-  /*
-    TODO [JPA Buddy] create field to map the 'phone_numerics' column
-     Available actions: Define target Java type | Uncomment as is | Remove column mapping
-     *
-   */
-  @Column(name = "phone_numerics", columnDefinition = "varchar[]")
-  private String[] phoneNumerics;
-
 
   //https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
   @Override

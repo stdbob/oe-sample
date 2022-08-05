@@ -12,25 +12,25 @@ import java.util.Objects;
 @Embeddable
 public class InventoryId implements Serializable {
   private static final long serialVersionUID = -8025505496284635558L;
-  @Column(name = "product_id", nullable = false, precision = 6)
-  private BigDecimal productId;
+  @Column(name = "product_id", nullable = false)
+  private Long productId;
 
-  @Column(name = "warehouse_id", nullable = false, precision = 3)
-  private BigDecimal warehouseId;
+  @Column(name = "warehouse_id", nullable = false)
+  private Long warehouseId;
 
-  public BigDecimal getProductId() {
+  public Long getProductId() {
     return productId;
   }
 
-  public void setProductId(BigDecimal productId) {
+  public void setProductId(Long productId) {
     this.productId = productId;
   }
 
-  public BigDecimal getWarehouseId() {
+  public Long getWarehouseId() {
     return warehouseId;
   }
 
-  public void setWarehouseId(BigDecimal warehouseId) {
+  public void setWarehouseId(Long warehouseId) {
     this.warehouseId = warehouseId;
   }
 

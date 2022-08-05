@@ -12,17 +12,17 @@ import java.util.Objects;
 @Embeddable
 public class ProductDescriptionId implements Serializable {
   private static final long serialVersionUID = -5204474292532206449L;
-  @Column(name = "product_id", nullable = false, precision = 6)
-  private BigDecimal productId;
+  @Column(name = "product_id", nullable = false)
+  private Long productId;
 
   @Column(name = "language_id", nullable = false, length = 3)
   private String languageId;
 
-  public BigDecimal getProductId() {
+  public Long getProductId() {
     return productId;
   }
 
-  public void setProductId(BigDecimal productId) {
+  public void setProductId(Long productId) {
     this.productId = productId;
   }
 
