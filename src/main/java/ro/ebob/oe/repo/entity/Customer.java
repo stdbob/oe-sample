@@ -223,7 +223,7 @@ public class Customer {
   }
 
   @Column(name = "phone_numbers", columnDefinition = "VARCHAR(256) ARRAY")
-  @Type(type = "ro.ebob.oe.repo.converter.ArrayObjectHibernateUserType")
+  @Type(type = "ro.ebob.oe.repo.converter.ArrayObjectHibernateUserType")//no other safe way to declare it
   private Object[] phoneNumbers;
 
   public Object[] getPhoneNumbers() {
